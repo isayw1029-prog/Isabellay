@@ -1,0 +1,99 @@
+.bead-curtain {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: min(38vh, 340px);
+  display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+  perspective: 760px;
+  pointer-events: none;
+}
+
+.bead-curtain__rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 10px;
+  border-bottom: 1px solid #ffffffd6;
+  background: linear-gradient(180deg, #ffffffd9, #d6edf383);
+  box-shadow: 0 5px 18px #98c5d123;
+}
+
+.bead-curtain__strand {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  flex: 0 0 clamp(5px, .78vw, 11px);
+  height: var(--length);
+  margin-top: 10px;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  transform-origin: top center;
+  animation: beadSway var(--duration) ease-in-out infinite alternate;
+  animation-delay: var(--sway);
+  cursor: crosshair;
+}
+
+.bead-curtain__strand:hover {
+  z-index: 5;
+  animation-play-state: paused;
+  transform: rotate(8deg) translateY(2px);
+}
+
+.bead-curtain__bead {
+  position: relative;
+  width: clamp(5px, .64vw, 9px);
+  height: clamp(9px, 1.02vw, 15px);
+  flex: 0 0 auto;
+  margin-top: -1px;
+  border-radius: 48% 52% 49% 51%;
+  background: linear-gradient(107deg, #fffffffa 0%, #c4e8f3e6 35%, #fbffffed 62%, #91c6d9ba 100%);
+  border: 1px solid #ffffffd9;
+  box-shadow: inset 1.5px 0 3px #fff, inset -1px -1px 3px #6ea6bb36, 0 2px 5px #8db9c33b;
+  backdrop-filter: blur(4px);
+}
+
+.bead-curtain__bead:nth-child(4n) {
+  width: clamp(7px, .74vw, 10px);
+  height: clamp(11px, 1.2vw, 17px);
+  background: linear-gradient(115deg, #fff, #d8f2ef, #acdce8);
+}
+
+.bead-curtain__strand:hover .bead-curtain__bead {
+  box-shadow: 0 0 9px #ffffff, inset 1.5px 0 3px #fff, inset -1px -1px 3px #6ea6bb36;
+}
+
+.bead-curtain__tassel {
+  position: absolute;
+  top: min(37vh, 330px);
+  left: 50%;
+  width: 1px;
+  height: 38px;
+  background: linear-gradient(#d4bd91, #f4e9c8 55%, transparent);
+  opacity: .7;
+}
+
+@keyframes beadSway {
+  from { rotate: -2.4deg; }
+  to { rotate: 2.4deg; }
+}
+
+@media (max-width: 700px) {
+  .bead-curtain { height: 36vh; justify-content: space-between; padding: 0 4px; }
+  .bead-curtain__strand { flex-basis: 4px; }
+  .bead-curtain__bead { width: 4px; height: 8px; }
+  .bead-curtain__tassel { top: 30vh; height: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bead-curtain__strand { animation: none; }
+}
