@@ -1,0 +1,25 @@
+﻿.intro-room { position:fixed; inset:0; z-index:1000; display:grid; place-items:center; overflow:hidden; background:#101417; color:#fff; touch-action:none; cursor:grab; }
+.intro-room:active { cursor:grabbing; }
+.intro-room__scene-frame { position:relative; width:100vw; height:100vh; overflow:hidden; }
+.intro-room__room-image { position:absolute; inset:-1.5%; width:103%; height:103%; display:block; background:url('/assets/intro/childhood-room.png') center/cover no-repeat; transform:perspective(1400px) rotateY(var(--room-yaw)) rotateX(var(--room-pitch)); transform-origin:50% 52%; transition:transform .14s ease-out; will-change:transform; }
+.intro-room--focusing-desk .intro-room__room-image { transform:perspective(1400px) translateY(7%) scale(1.48); transition:transform 1.25s cubic-bezier(.65,0,.2,1); }
+.intro-room--desk .intro-room__room-image,.intro-room--island .intro-room__room-image { transform:perspective(1400px) translateY(7%) scale(1.48) rotateY(var(--room-yaw)) rotateX(var(--room-pitch)); transition:transform .18s ease-out; }
+.intro-room--focusing-island .intro-room__room-image { transform:perspective(1400px) translateY(11%) scale(2.05); transition:transform 1.45s cubic-bezier(.65,0,.2,1); }
+.intro-room__desk-hotspot { position:absolute; left:25%; top:38%; width:50%; height:28%; z-index:3; border:0; background:transparent; cursor:pointer; }
+.intro-room__ring { position:absolute; left:50%; top:48%; width:62px; height:62px; border:1px solid #f5fff4cc; border-radius:50%; transform:translate(-50%,-50%); box-shadow:0 0 0 10px #f5fff41c,0 0 24px #ffffff70; animation:introPulse 2.2s ease-in-out infinite; }
+.intro-room__desk-label,.intro-room__island span { position:absolute; left:50%; top:calc(50% + 48px); transform:translateX(-50%); white-space:nowrap; color:#fff; text-shadow:0 2px 12px #000; font:9px var(--font-pixel); letter-spacing:.14em; }
+.intro-room__island { position:absolute; left:50%; top:51%; width:34%; height:28%; z-index:4; padding:0; border:0; background:transparent; cursor:pointer; transform:translate(-50%,-50%); animation:islandAppear .65s cubic-bezier(.2,.8,.2,1) both,islandFloat 5.4s ease-in-out .65s infinite; }
+.intro-room__island img { width:100%; height:100%; display:block; object-fit:contain; image-rendering:auto; mix-blend-mode:screen; }
+.intro-room__island span { top:calc(100% + 8px); }
+.intro-room--focusing-island .intro-room__island { animation:none; transform:translate(-50%,-50%) scale(1.22); transition:transform 1.45s cubic-bezier(.65,0,.2,1),opacity .8s ease; opacity:.88; }
+.intro-room__copy { position:absolute; left:50%; bottom:24px; z-index:5; width:min(90vw,720px); transform:translateX(-50%); text-align:center; pointer-events:none; }
+.intro-room__copy p { margin:0; color:#fff; font:clamp(8px,1vw,11px) var(--font-pixel); letter-spacing:.14em; text-shadow:0 2px 12px #000; }
+@keyframes introPulse { 0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(.94)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)} }
+@keyframes islandAppear { from{opacity:0;transform:translate(-50%,-43%) scale(.92)} to{opacity:1;transform:translate(-50%,-50%) scale(1)} }
+@keyframes islandFloat { 0%,100%{transform:translate(-50%,-50%) translateY(0) rotate(-.35deg)} 50%{transform:translate(-50%,-50%) translateY(-5px) rotate(.35deg)} }
+@media (prefers-reduced-motion:reduce) { .intro-room__ring,.intro-room__island { animation:none; } }
+@media (max-width:700px) { .intro-room__desk-hotspot { left:22%; width:56%; } .intro-room__island { width:44%; } .intro-room__copy { bottom:18px; } .intro-room__desk-label,.intro-room__island span { font-size:7px; } }
+
+
+
+
