@@ -1,0 +1,9 @@
+﻿.day-night-toggle {
+  position: fixed; z-index: 70; top: 20px; right: 24px; display: inline-flex; align-items: center; gap: 9px; min-height: 34px; padding: 7px 11px 7px 8px; border: 1px solid rgba(255,255,255,.72); border-radius: 999px; color: #326d7a; background: rgba(247,255,255,.56); box-shadow: 0 8px 26px rgba(65,142,160,.18), inset 0 1px rgba(255,255,255,.9); backdrop-filter: blur(14px); font: 700 9px var(--font-pixel); letter-spacing: .14em; cursor: pointer; transition: background 1s ease, color 1s ease, border-color 1s ease, box-shadow .35s ease, transform .35s cubic-bezier(.22,1,.36,1); }
+.day-night-toggle:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 12px 30px rgba(65,142,160,.28), inset 0 1px rgba(255,255,255,.9); }
+.day-night-toggle:active { transform: translateY(1px) scale(.97); }
+.day-night-toggle__orb { width: 15px; height: 15px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff9c9, #8be0d5 58%, #54b9cb); box-shadow: 0 0 15px #69dce6aa; transition: background 1s ease, box-shadow 1s ease; }
+.day-night-toggle i { font-style: normal; font-size: 14px; line-height: 1; }
+.day-night-toggle.is-night { color: #d9d2ff; border-color: rgba(181,219,255,.45); background: rgba(43,34,93,.56); box-shadow: 0 8px 30px rgba(47,28,104,.34), inset 0 1px rgba(204,240,255,.3); }
+.day-night-toggle.is-night .day-night-toggle__orb { background: radial-gradient(circle at 35% 30%, #dffeff, #62e9ed 48%, #7772e9); box-shadow: 0 0 18px #42e8efcc; }
+@media (max-width:640px) { .day-night-toggle { top: 16px; right: 16px; } }
